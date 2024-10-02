@@ -12,7 +12,7 @@ class database1:
     lec_name = 'Llewelyn Fernandes'
     time = '11-1pm'
     type = 'Laboratory'
-    room = 'RHB 306'
+    room = 'St J BLK 3 GF LAB'
 
 
 class finalproj:

@@ -17,7 +17,7 @@ courses = {
 }
 
 # Get the day of the week as a string
-day_of_week = now.strftime("%A")  # %A gives the full weekday name
+day_of_week = 'Friday'
 
 # Time of day
 current_time = now.hour
@@ -40,6 +40,9 @@ elif day_of_week == 'Friday':
     course = get_course_info("Security")
 elif day_of_week == 'Friday' and current_time > 11:
     course = get_course_info("Security1")
+else:
+    print("Fool, you don't have classes on Wednesdays nor weekends!")
+    exit()
 
 
 
@@ -82,6 +85,7 @@ options = WebDriverWait(browser, 10).until(EC.visibility_of_all_elements_located
 
 my_option = "Computing"
 
+#Go through the options and click the one that matches my_option
 for option in options:
     if option.text == my_option:
         option.click()
@@ -120,11 +124,19 @@ reason.send_keys("Seats not available yet.")
 more_than_5 = browser.find_element(By.ID, "form_60221")
 more_than_5.send_keys("")
 
-# Switch back to the default content
-browser.switch_to.default_content()
+#find the submit button
+submit = browser.find_element(By.ID, "form-submit")
 
-#Wait for me to click submit
-input("Press enter after clicking submit")
+try:
+    #Waits for the submit button to click
+    WebDriverWait(browser, 300).until(
+    lambda browser: submit.get_attribute("disabled") == "true" or submit.get_attribute("disabled") == "disabled"
+)
 
-#quit
-browser.quit()
+    print("Button was clicked and saveHandler() was triggered!")
+
+finally:
+    # Switch back to the default content
+    browser.switch_to.default_content()
+    # Close the browser
+    browser.quit()
