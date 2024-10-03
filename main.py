@@ -17,7 +17,7 @@ courses = {
 }
 
 # Get the day of the week as a string
-day_of_week = 'Friday'
+day_of_week = now.strftime("%A")
 
 # Time of day
 current_time = now.hour
