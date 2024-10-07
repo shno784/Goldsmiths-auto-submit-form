@@ -1,10 +1,12 @@
-import random
+import schedule
+import time
 from datetime import datetime
 from selenium.webdriver.common.by import By
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from courses import security, database, finalproj, database1, security1
+
 
 #Get current time
 now = datetime.now()
@@ -55,7 +57,7 @@ WebDriverWait(browser, 20).until(EC.element_to_be_clickable((By.ID, "ccc-notify-
 
 wait = WebDriverWait(browser, 10)  # Set a 10-second timeout
 
- # Wait for the iframe to be present and store it as a WebElement
+# Wait for the iframe to be present and store it as a WebElement
 iframe_element = WebDriverWait(browser, 30).until(EC.presence_of_element_located((By.CSS_SELECTOR, "iframe#gecko-form-iframe-embed-21FO00hprjdwl80028mnqwbnpo")))
 
 # Now switch to the iframe using the WebElement
